@@ -20,14 +20,14 @@
 		company
 		;; --- Better Editor ---
 		hungry-delete
-		;;swiper
-		;;counsel
-		;;smartparens
+		swiper
+		counsel
+		smartparens
 		;; --- Major Mode ---
 		;;js2-mode
 		;; --- Minor Mode ---
 		;;nodejs-repl
-		;;exec-path-from-shell
+		exec-path-from-shell
 		;; --- Themes ---
 		monokai-theme
 		;; solarized-theme
@@ -48,8 +48,8 @@
 	 (package-install pkg))))
 
  ;; Find Executable Path on OS X
-;;(when (memq window-system '(mac ns))
-;;  (exec-path-from-shell-initialize))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 
 
@@ -83,7 +83,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-idle-delay 0.08)
+ '(company-minimum-prefix-length 1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -125,3 +126,32 @@
 
 ;;高亮当前行
 (global-hl-line-mode 1)
+
+;;swipper and counsel
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+
+
+
+;;config smartparens
+(require 'smartparens-config)
+;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+(smartparens-global-mode t)
+
+;; bing keyboard with key help
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
+;;using org mode agenda
+
+(setq org-agenda-files '("~/org"))
+  (global-set-key (kbd "C-c a") 'org-agenda)
