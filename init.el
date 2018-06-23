@@ -28,9 +28,7 @@
 		;; --- Minor Mode ---
 		;;nodejs-repl
 		exec-path-from-shell
-		;; --- Themes ---
-		monokai-theme
-		;; solarized-theme
+		popwin
 		) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -155,3 +153,12 @@
 
 (setq org-agenda-files '("~/org"))
   (global-set-key (kbd "C-c a") 'org-agenda)
+
+;;刷新文件流
+(global-auto-revert-mode 1)
+
+;;以关闭自己生产的保存文件
+(setq auto-save-default nil)
+
+;;关闭 Emacs 中的警告音
+(setq ring-bell-function 'ignore)
